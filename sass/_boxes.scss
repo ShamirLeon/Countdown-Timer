@@ -1,0 +1,172 @@
+@use 'variables';
+
+.boxes{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 2rem;
+    color: variables.$Grayish-blue;
+    position: relative;
+    z-index: 4;
+    flex-grow: 2;
+}
+
+.box{
+    &::before{
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: rgba(variables.$Very-dark-black-blue, $alpha: .5);
+        position: absolute;
+        border-radius: 50%;
+        left: -5px;
+        bottom:0;
+        top: 0;
+        margin: auto;
+        z-index: 100;
+    }
+
+    &::after{
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: rgba(variables.$Very-dark-black-blue, $alpha: .5);
+        position: absolute;
+        border-radius: 50%;
+        right: -5px;
+        bottom:0;
+        top: 0;
+        margin: auto;
+    }
+}
+
+.top, 
+.bottom,
+.box .top-flip,
+.box .bottom-flip
+{
+    overflow: hidden;
+}
+
+
+.top,
+.bottom{
+    display: flex;
+    justify-content:center;
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+
+
+.text{
+    position: absolute;  
+    &--top{
+        top: 25px;
+        left: 0;
+        right: 0;
+
+        &--under{
+            top: 25px;
+        }
+
+    }
+
+    &--bot{
+        bottom: 27px;
+    }
+}
+
+.top-flip{
+    opacity: .9;
+}
+
+.bottom-flip{
+    position: relative;
+}
+
+.top,
+.box .top-flip
+{
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color:rgba(variables.$Very-dark-black-blue, 1) ;
+    border-bottom: 1px solid rgba(0, 0, 0, $alpha: .1);
+    justify-content: center;
+}
+
+.bottom,
+.box .bottom-flip
+{
+    background-color: rgba(variables.$Very-dark-black-blue, 1);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.box{
+    width: 140px;
+    height: 140px;
+    display: inline-flex;
+    flex-direction: column;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0px 8px 0px 0px rgba(0,0,0,0.95);
+    color: variables.$Soft-red;
+    font-size: 65px;
+    font-weight: 900;
+
+    & .top-flip{
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        animation: flip-top 250ms ease-in;
+        transform-origin: bottom;
+        text-align: center;
+        border-top: 1px rgba($color: #ffffff, $alpha: 0.5) solid;
+    }
+
+    & .bottom-flip{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 50%;
+        animation: flip-bottom 250ms ease-out 250ms;
+        transform-origin: top;
+        transform: rotateX(90deg);
+        border-bottom: 1px rgba($color: #000000, $alpha: 0.5) solid;
+    }
+
+    &__title{
+        position: absolute;
+        text-align: center;
+        font-size: 14px;
+        color: variables.$White;
+        bottom: -35px;
+        right: 0;
+        left: 0;
+    }
+
+}
+
+@keyframes flip-top {
+    100%{
+        transform: rotateX(90deg);
+    }
+}
+
+@keyframes flip-bottom{
+    100%{
+        transform: rotateX(0deg);
+    }
+}
+
+
+
+
+
+
+

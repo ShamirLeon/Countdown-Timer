@@ -1,0 +1,17 @@
+@use 'variables';
+
+.social{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+}
+
+.attribution{
+    margin-top: 60px;
+    text-align: center;
+    color: variables.$White;
+    a{
+        text-decoration: none;
+        color: variables.$Soft-red ;
+    }
+}
